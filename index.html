@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8"/>
+
+</head>
+
+<body>
+    <script>
+        function computerPlay () {
+            let selectRandom= Math.floor(Math.random() * 3);
+            if (selectRandom===0) {return "rock";}
+            else if (selectRandom===1) {return "paper";}
+            else {return "scissors";}
+        }
+
+        function player () {
+            let playerChoice= prompt("Choose rock, paper, or scissors...").trim().toLowerCase();
+            while (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
+                        console.log("Invalid Entry");
+                        playerChoice = prompt("Pick Rock, Paper, or Scissors").trim().toLowerCase();
+                    }
+            return playerChoice;
+        }
+
+        function playRound () {
+            let playerSelection= player();
+            let computerSelection= computerPlay();
+
+            if (playerSelection==="rock") {
+                if (computerSelection==="rock") {return "It\'s a tie. Try again";}
+                else if (computerSelection==="paper") {return "You lose. Paper beats rock!";}
+                else {return "You win. Rock beats scissors!";}
+            }
+            else if (playerSelection==="paper") {
+                if (computerSelection==="rock") {return "You win. Paper beats rock!";}
+                else if (computerSelection==="paper") {return "It\'s a tie. Try again";}
+                else {return "You lose.  Scissors beat paper!";}
+            }
+            else {
+                if (computerSelection==="rock") {return "You lose. Rock beats scissors!";}
+                else if (computerSelection==="paper") {return "You win.  Scissors beats paper!";}
+                else {return "It\'s a tie.  Try again.";}
+            }
+        }
+        
+
+        function game() {
+            for (var i=1; i<6; i++) { 
+            console.log("This is round " + i +": ");
+            let round_result = playRound();
+            console.log(round_result);
+            }
+        }
+        
+    </script>
+
+</body>
+</html>
